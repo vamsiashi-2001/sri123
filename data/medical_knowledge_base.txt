@@ -1,0 +1,324 @@
+MEDICAL KNOWLEDGE BASE - AI Medical Assistant
+==============================================
+This document contains general medical information for educational purposes only.
+Always consult a licensed healthcare professional for diagnosis and treatment.
+
+=== CARDIOVASCULAR DISEASES ===
+
+HYPERTENSION (HIGH BLOOD PRESSURE)
+Definition: Hypertension is a condition where the force of blood against artery walls is consistently too high. Blood pressure is measured in millimeters of mercury (mmHg) and recorded as two numbers: systolic pressure (when heart beats) over diastolic pressure (when heart rests).
+
+Classification:
+- Normal: Less than 120/80 mmHg
+- Elevated: 120-129 systolic and less than 80 diastolic
+- Stage 1 Hypertension: 130-139 systolic or 80-89 diastolic
+- Stage 2 Hypertension: 140 or higher systolic or 90 or higher diastolic
+- Hypertensive Crisis: Higher than 180/120 mmHg (requires immediate medical attention)
+
+Symptoms: Hypertension is often called the "silent killer" because it usually has no symptoms. Some people may experience headaches, shortness of breath, or nosebleeds, but these are not specific to hypertension.
+
+Causes and Risk Factors:
+- Primary (essential) hypertension: Develops gradually with no identifiable cause
+- Secondary hypertension: Caused by underlying conditions like kidney disease, thyroid problems, sleep apnea
+- Risk factors: Age, family history, obesity, sedentary lifestyle, tobacco use, high sodium diet, excessive alcohol, stress, certain medications
+
+Complications: Heart attack, stroke, heart failure, kidney damage, vision loss, metabolic syndrome, aneurysm.
+
+Treatment:
+- Lifestyle changes: DASH diet (low sodium, rich in fruits/vegetables), regular exercise (150 min/week), weight loss, limit alcohol, quit smoking
+- Medications: ACE inhibitors (lisinopril), ARBs (losartan), beta-blockers (metoprolol), calcium channel blockers (amlodipine), diuretics (hydrochlorothiazide)
+
+CORONARY ARTERY DISEASE (CAD)
+Definition: CAD occurs when the major blood vessels that supply the heart become damaged or diseased, usually due to buildup of cholesterol-containing deposits (plaques) called atherosclerosis.
+
+Symptoms:
+- Chest pain (angina): Pressure, tightness, or squeezing in the chest
+- Shortness of breath
+- Heart attack: Severe chest pain, pain radiating to arm/jaw, sweating, nausea
+
+Treatment:
+- Lifestyle changes, medications (statins, aspirin, beta-blockers, nitrates)
+- Procedures: Angioplasty with stent placement, coronary artery bypass surgery (CABG)
+
+HEART FAILURE
+Definition: Heart failure means the heart can't pump enough blood to meet the body's needs. The heart keeps working but not as efficiently as normal.
+
+Types:
+- HFrEF (reduced ejection fraction): Weakened heart muscle
+- HFpEF (preserved ejection fraction): Stiff heart muscle
+
+Symptoms: Shortness of breath, fatigue, swollen legs/ankles, rapid heartbeat, persistent cough
+
+Treatment: ACE inhibitors, beta-blockers, diuretics, aldosterone antagonists, SGLT2 inhibitors, device therapy (ICD, CRT), heart transplant
+
+=== DIABETES MELLITUS ===
+
+TYPE 1 DIABETES
+Definition: An autoimmune condition where the immune system attacks insulin-producing beta cells in the pancreas, resulting in little or no insulin production.
+
+Onset: Usually in children and young adults, but can occur at any age.
+Cause: Genetic and environmental factors, not related to lifestyle.
+
+Symptoms: Increased thirst and urination, extreme hunger, weight loss, fatigue, blurred vision, frequent infections.
+
+Treatment: Insulin therapy (multiple daily injections or insulin pump), blood glucose monitoring, carbohydrate counting, regular exercise.
+
+TYPE 2 DIABETES
+Definition: The body doesn't use insulin properly (insulin resistance) or doesn't produce enough insulin. Most common form of diabetes.
+
+Risk Factors: Obesity, age over 45, family history, physical inactivity, prediabetes, gestational diabetes history, polycystic ovary syndrome.
+
+Symptoms: Same as Type 1 but often milder and develop gradually. Many people have no symptoms.
+
+Complications: Diabetic neuropathy, nephropathy, retinopathy, cardiovascular disease, foot problems, poor wound healing.
+
+Treatment:
+- Lifestyle: Weight loss, healthy diet, regular exercise (aim for A1C below 7%)
+- Medications: Metformin (first-line), SGLT2 inhibitors (empagliflozin), GLP-1 agonists (semaglutide, liraglutide), sulfonylureas, insulin when needed
+
+BLOOD GLUCOSE TARGETS:
+- Fasting glucose: 80-130 mg/dL
+- Post-meal (2 hours): Less than 180 mg/dL
+- A1C: Less than 7% (53 mmol/mol)
+
+=== RESPIRATORY DISEASES ===
+
+ASTHMA
+Definition: Asthma is a condition in which the airways narrow and swell and may produce extra mucus. This can make breathing difficult and trigger coughing, wheezing, and shortness of breath.
+
+Triggers: Allergens (pollen, dust mites, pet dander), respiratory infections, exercise, cold air, smoke, air pollution, stress, certain medications (aspirin, NSAIDs, beta-blockers).
+
+Symptoms: Shortness of breath, chest tightness, wheezing, coughing (especially at night).
+
+Severity Classification:
+- Intermittent: Symptoms less than 2 days per week
+- Mild persistent: Symptoms more than 2 days per week
+- Moderate persistent: Daily symptoms
+- Severe persistent: Continuous symptoms throughout the day
+
+Treatment:
+- Quick-relief (rescue): Short-acting beta2-agonists (albuterol/salbutamol) — use during attacks
+- Long-term control: Inhaled corticosteroids (fluticasone, budesonide), long-acting beta2-agonists (salmeterol), leukotriene modifiers (montelukast)
+- Biologics for severe asthma: Omalizumab, mepolizumab, dupilumab
+
+CHRONIC OBSTRUCTIVE PULMONARY DISEASE (COPD)
+Definition: COPD is a chronic inflammatory lung disease that causes obstructed airflow from the lungs. It includes chronic bronchitis and emphysema.
+
+Main Cause: Cigarette smoking (responsible for ~85-90% of cases); also occupational dust/chemicals, air pollution.
+
+Symptoms: Shortness of breath (dyspnea), chronic cough with mucus, wheezing, chest tightness, frequent respiratory infections.
+
+Diagnosis: Spirometry — FEV1/FVC ratio below 0.70 after bronchodilator.
+
+Treatment:
+- Most important: Quit smoking
+- Bronchodilators: LABA (salmeterol), LAMA (tiotropium)
+- Inhaled corticosteroids (when frequent exacerbations)
+- Oxygen therapy for severe cases
+- Pulmonary rehabilitation program
+- Vaccines: Flu and pneumococcal vaccines to prevent infections
+
+PNEUMONIA
+Definition: Pneumonia is an infection that inflames the air sacs in one or both lungs, which may fill with fluid or pus.
+
+Types:
+- Community-acquired pneumonia (CAP): Most common
+- Hospital-acquired (nosocomial) pneumonia
+- Aspiration pneumonia
+- Viral pneumonia (including COVID-19)
+
+Symptoms: Cough with phlegm, fever, chills, shortness of breath, chest pain when breathing, fatigue.
+
+Treatment: Antibiotics for bacterial pneumonia (amoxicillin, azithromycin, doxycycline); antivirals for viral; oxygen therapy; hospitalization for severe cases.
+
+=== INFECTIOUS DISEASES ===
+
+INFLUENZA (FLU)
+Definition: Influenza is a contagious respiratory illness caused by influenza viruses (types A, B, C, D).
+
+Transmission: Droplets from coughing, sneezing, or talking; contact with contaminated surfaces.
+
+Symptoms: Sudden fever, cough, sore throat, runny nose, muscle aches, headache, fatigue. Vomiting and diarrhea more common in children.
+
+Complications: Pneumonia, bronchitis, sinus and ear infections, worsening of chronic conditions (heart disease, asthma, diabetes).
+
+Prevention: Annual flu vaccine (most important), handwashing, avoid touching face.
+
+Treatment: Rest, fluids, antiviral medications (oseltamivir/Tamiflu — most effective within 48 hours of symptom onset).
+
+COVID-19
+Definition: Coronavirus disease 2019 is caused by SARS-CoV-2.
+
+Symptoms: Range from mild to severe — fever, cough, fatigue, loss of taste/smell, shortness of breath, severe: pneumonia, ARDS, organ failure.
+
+Prevention: Vaccination, masks, social distancing, hand hygiene.
+
+Treatment: Supportive care; antivirals (nirmatrelvir/ritonavir — Paxlovid) for high-risk; corticosteroids (dexamethasone) for hospitalized patients needing oxygen.
+
+Long COVID: Persistent symptoms lasting weeks to months after infection — fatigue, brain fog, shortness of breath, joint pain.
+
+URINARY TRACT INFECTION (UTI)
+Definition: UTI is an infection in any part of the urinary system — kidneys, ureters, bladder, and urethra.
+
+Types:
+- Cystitis (bladder infection): Most common
+- Pyelonephritis (kidney infection): More serious
+
+Risk Factors: Female sex (shorter urethra), sexual activity, menopause, urinary abnormalities, catheter use, diabetes.
+
+Symptoms: Burning urination, frequent urge to urinate, cloudy/strong-smelling urine, pelvic pain (women), back/flank pain (kidney infection).
+
+Treatment: Antibiotics (nitrofurantoin, trimethoprim/sulfamethoxazole, fosfomycin for uncomplicated UTI; fluoroquinolones for complicated).
+
+=== MENTAL HEALTH ===
+
+DEPRESSION (MAJOR DEPRESSIVE DISORDER)
+Definition: Depression is a common and serious medical illness that negatively affects how you feel, think, and act.
+
+Symptoms (DSM-5 criteria — 5 or more for ≥2 weeks):
+- Depressed mood most of the day
+- Loss of interest or pleasure (anhedonia)
+- Weight change or appetite disturbance
+- Sleep disturbance (insomnia or hypersomnia)
+- Psychomotor agitation or retardation
+- Fatigue or loss of energy
+- Feelings of worthlessness or excessive guilt
+- Difficulty concentrating
+- Recurrent thoughts of death or suicidal ideation
+
+Treatment:
+- Psychotherapy: Cognitive-behavioral therapy (CBT), interpersonal therapy (IPT)
+- Medications: SSRIs (sertraline, escitalopram — first-line), SNRIs (venlafaxine, duloxetine), bupropion, tricyclics, MAOIs
+- Combination therapy most effective for moderate-severe depression
+- ECT (electroconvulsive therapy) for severe/treatment-resistant cases
+
+ANXIETY DISORDERS
+Types: Generalized Anxiety Disorder (GAD), Panic Disorder, Social Anxiety Disorder, Specific Phobias, PTSD, OCD.
+
+GAD Symptoms: Excessive worry about multiple things, restlessness, fatigue, difficulty concentrating, muscle tension, sleep problems.
+
+Treatment: CBT (most effective), SSRIs (sertraline, escitalopram), SNRIs, buspirone, benzodiazepines (short-term only due to dependence risk).
+
+=== GASTROINTESTINAL CONDITIONS ===
+
+GASTROESOPHAGEAL REFLUX DISEASE (GERD)
+Definition: GERD occurs when stomach acid frequently flows back into the tube connecting your mouth and stomach (esophagus).
+
+Symptoms: Heartburn (burning in chest), regurgitation, difficulty swallowing, chest pain, chronic cough, hoarse voice.
+
+Triggers: Large meals, lying down after eating, obesity, pregnancy, smoking, alcohol, spicy/fatty foods, coffee, citrus.
+
+Treatment:
+- Lifestyle: Lose weight, elevate head of bed, eat smaller meals, avoid triggers, don't eat 2-3 hours before bed
+- Antacids (quick relief), H2 blockers (famotidine), proton pump inhibitors — PPIs (omeprazole, pantoprazole — most effective for frequent GERD)
+- Surgery (Nissen fundoplication) for severe/refractory GERD
+
+IRRITABLE BOWEL SYNDROME (IBS)
+Definition: IBS is a common disorder affecting the large intestine with symptoms like cramping, abdominal pain, bloating, gas, diarrhea, and constipation.
+
+Types: IBS-D (diarrhea predominant), IBS-C (constipation predominant), IBS-M (mixed).
+
+Cause: Exact cause unknown. Factors: gut-brain axis dysregulation, gut microbiome changes, visceral hypersensitivity, motility disturbances.
+
+Treatment:
+- Diet: Low-FODMAP diet, avoid triggers (caffeine, alcohol, fatty foods, artificial sweeteners)
+- Fiber supplements for IBS-C
+- Antispasmodics (hyoscine/dicyclomine)
+- Antidiarrheal (loperamide for IBS-D)
+- Antidepressants (low-dose tricyclics or SSRIs) for pain
+- Psychological therapies (CBT, gut-directed hypnotherapy)
+
+=== MUSCULOSKELETAL CONDITIONS ===
+
+OSTEOARTHRITIS (OA)
+Definition: OA is the most common form of arthritis, occurring when the protective cartilage that cushions the ends of bones wears down over time.
+
+Affected joints: Knees, hips, hands, spine.
+
+Symptoms: Joint pain, stiffness (especially in morning but less than 30 minutes), tenderness, loss of flexibility, grating sensation, bone spurs.
+
+Risk Factors: Age, obesity, joint injury, repetitive stress, gender (women more common), genetics.
+
+Treatment:
+- Exercise and weight loss (most important)
+- Physical therapy
+- Analgesics: Acetaminophen (paracetamol), NSAIDs (ibuprofen, naproxen) — topical NSAIDs preferred for knee/hand OA
+- Intra-articular injections: Corticosteroids, hyaluronic acid
+- Surgery: Osteotomy, joint replacement (arthroplasty) for severe cases
+
+RHEUMATOID ARTHRITIS (RA)
+Definition: RA is a chronic inflammatory disorder affecting joints, causing painful swelling that can eventually result in bone erosion and joint deformity.
+
+Key Difference from OA: RA is autoimmune, symmetric (affects same joints on both sides), morning stiffness lasting more than 1 hour, systemic symptoms.
+
+Symptoms: Joint pain, swelling, stiffness, fatigue, fever, weight loss.
+
+Treatment:
+- DMARDs (disease-modifying antirheumatic drugs): Methotrexate (first-line), hydroxychloroquine, sulfasalazine, leflunomide
+- Biologic DMARDs: TNF inhibitors (adalimumab, etanercept), IL-6 inhibitors (tocilizumab), B-cell depletion (rituximab)
+- JAK inhibitors: Tofacitinib, baricitinib
+- NSAIDs and corticosteroids for symptom relief
+
+=== COMMON MEDICATIONS ===
+
+ANALGESICS (PAIN RELIEVERS)
+- Acetaminophen (Paracetamol/Tylenol): For mild-moderate pain, fever. Max 4g/day (3g/day if elderly or liver disease). Does NOT cause GI ulcers but liver toxic in overdose.
+- NSAIDs (Ibuprofen, Naproxen, Aspirin): Anti-inflammatory. Caution with peptic ulcer disease, kidney disease, cardiovascular disease, anticoagulants.
+- Opioids (Morphine, Oxycodone, Tramadol): For severe pain. Risk of dependence, respiratory depression.
+
+ANTIBIOTICS
+- Amoxicillin: Broad-spectrum penicillin; ear, sinus, chest, UTI infections
+- Azithromycin: Atypical pneumonia, STIs, skin infections; 5-day Z-pack
+- Ciprofloxacin (fluoroquinolone): UTIs, GI infections, respiratory; avoid in children/pregnant women unless necessary
+- Doxycycline: Lyme disease, chlamydia, respiratory infections, malaria prevention
+- Important: Complete full antibiotic course; do not share antibiotics; antibiotic resistance is a major global health concern.
+
+CARDIOVASCULAR MEDICATIONS
+- Statins (Atorvastatin, Rosuvastatin): Lower LDL cholesterol; reduce cardiovascular events. Take at night for short-acting statins.
+- Beta-blockers (Metoprolol, Carvedilol): Heart failure, hypertension, angina, arrhythmias
+- ACE inhibitors (Lisinopril, Ramipril): Hypertension, heart failure, diabetic nephropathy. Can cause dry cough.
+- Aspirin 81mg: Low-dose for antiplatelet therapy in established cardiovascular disease or after stroke.
+
+=== PREVENTIVE HEALTH AND SCREENINGS ===
+
+RECOMMENDED SCREENINGS BY AGE:
+- Blood pressure: Every 1-2 years from age 18
+- Cholesterol: Every 4-6 years from age 20
+- Blood glucose (diabetes): Every 3 years from age 35, or earlier if risk factors
+- Colorectal cancer: Colonoscopy every 10 years starting age 45
+- Breast cancer (women): Mammogram every 1-2 years starting age 40-50 (guidelines vary)
+- Cervical cancer (women): Pap smear every 3 years ages 21-65, or every 5 years with HPV co-test ages 30-65
+- Prostate cancer (men): Discuss PSA testing with doctor at age 50 (earlier if high risk)
+- Osteoporosis (women): Bone density (DEXA) scan at age 65, earlier if risk factors
+- Lung cancer: Annual low-dose CT scan for heavy smokers ages 50-80
+
+VACCINATIONS (ADULTS):
+- Influenza: Annually
+- COVID-19: As per current guidelines
+- Tdap (tetanus, diphtheria, pertussis): Every 10 years
+- Shingles (Shingrix): 2 doses for adults 50+
+- Pneumococcal: PCV20 or PPSV23 for adults 65+
+- HPV: Up to age 26 (or 27-45 after discussion with doctor)
+
+LIFESTYLE RECOMMENDATIONS:
+- Physical activity: 150-300 minutes moderate-intensity or 75-150 minutes vigorous-intensity per week
+- Diet: Mediterranean or DASH diet — rich in fruits, vegetables, whole grains, lean proteins, healthy fats
+- Sleep: 7-9 hours per night for adults
+- Avoid tobacco in all forms
+- Limit alcohol: No more than 1 drink/day (women) or 2 drinks/day (men); less is better
+- Maintain healthy BMI: 18.5-24.9 kg/m²
+
+=== EMERGENCY SYMPTOMS — SEEK IMMEDIATE CARE ===
+
+Call 911 (Emergency Services) immediately for:
+- Chest pain, pressure, or tightness (possible heart attack)
+- Signs of stroke: Face drooping, Arm weakness, Speech difficulty, Time to call 911 (FAST)
+- Severe shortness of breath
+- Sudden severe headache ("thunderclap")
+- Signs of severe allergic reaction (anaphylaxis): Throat swelling, difficulty breathing, severe hives after exposure to allergen
+- High fever with stiff neck and photophobia (possible meningitis)
+- Uncontrolled bleeding
+- Loss of consciousness or altered mental status
+- Suspected poisoning or overdose
+
+DISCLAIMER: This information is for general educational purposes only and does not constitute medical advice. Always consult a qualified healthcare professional for medical diagnosis and treatment.
