@@ -1,5 +1,38 @@
+# ═══════════════════════════════════════════════════════════════
+#  AI Medical Assistant — Requirements (All versions verified)
+#  Install: pip install -r requirements.txt
+# ═══════════════════════════════════════════════════════════════
+
+# Web framework
 flask==3.0.3
 flask-cors==4.0.1
-requests==2.31.0
-python-dotenv==1.0.1
+
+# WSGI server (for Render)
 gunicorn==21.2.0
+
+# HTTP (Groq API calls)
+requests==2.32.3
+
+# Environment variables (.env file support)
+python-dotenv==1.0.1
+
+# NumPy (must be installed before faiss-cpu)
+numpy==1.26.4
+
+# Vector database
+faiss-cpu==1.7.4
+
+# NOTE: Removed sentence-transformers to reduce memory footprint
+# Using API-based embeddings instead (Groq API or lightweight keyword-based)
+
+# Text splitting (no langchain dependency — built-in fallback in app.py)
+# Install only if you want the full langchain splitter:
+# langchain-text-splitters==0.0.1
+
+# ML & Data Science
+scikit-learn==1.5.1
+pandas==2.2.2
+
+# PDF support
+pypdf==4.3.1
+
