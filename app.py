@@ -790,7 +790,16 @@ def initialize():
     print("="*60 + "\n")
 
 
-if __name__ == "__main__":
+# ═════════════════════════════════════════════════════════════════════════════
+# Initialize on import (for Gunicorn) or on direct run
+# ═════════════════════════════════════════════════════════════════════════════
+try:
     initialize()
+except Exception as e:
+    print(f"[WARN] Initialization failed: {e}")
+    print("[INFO] App will still start but with limited functionality")
+
+
+if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
-app.run(debug=False, host="0.0.0.0", port=port)
+    app.run(debug=False, host="0.0.0.0", port=port)
