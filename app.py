@@ -27,30 +27,25 @@ from sentence_transformers import SentenceTransformer
 try:
     from langchain_text_splitters import RecursiveCharacterTextSplitter
 except ImportError:
-    try:
-        from langchain_text_splitters import RecursiveCharacterTextSplitter
-    except ImportError:
-        # Pure-Python fallback — no langchain needed
-        class RecursiveCharacterTextSplitter:
-            def __init__(self, chunk_size=500, chunk_overlap=50, **kw):
-                self.chunk_size    = chunk_size
-                self.chunk_overlap = chunk_overlap
-            def split_text(self, text: str) -> List[str]:
-                chunks, start = [], 0
-                while start < len(text):
-                    end = min(start + self.chunk_size, len(text))
-                    chunks.append(text[start:end])
-                    start += self.chunk_size - self.chunk_overlap
-                return [c.strip() for c in chunks if c.strip()]
+    class RecursiveCharacterTextSplitter:
+        def __init__(self, chunk_size=500, chunk_overlap=50, **kw):
+            self.chunk_size    = chunk_size
+            self.chunk_overlap = chunk_overlap
+        def split_text(self, text: str) -> List[str]:
+            chunks, start = [], 0
+            while start < len(text):
+                end = min(start + self.chunk_size, len(text))
+                chunks.append(text[start:end])
+                start += self.chunk_size - self.chunk_overlap
+            return [c.strip() for c in chunks if c.strip()]
 
 # ── ML (scikit-learn) ─────────────────────────────────────────────────────────
 from sklearn.linear_model    import LogisticRegression
 from sklearn.ensemble        import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.metrics         import (accuracy_score, classification_report,
-                                     confusion_matrix, roc_auc_score)
+                                     confusion_matrix)
 from sklearn.preprocessing   import LabelEncoder, StandardScaler
-from sklearn.pipeline        import Pipeline
 import pandas as pd
 
 # =============================================================================
@@ -60,19 +55,17 @@ app = Flask(__name__)
 CORS(app)
 
 # =============================================================================
-#  Configuration — API KEY
+#  Configuration — Load from environment variables ONLY (no hardcoded keys)
 # =============================================================================
-# Load .env file if present (optional, for local development)
 try:
     from dotenv import load_dotenv
     load_dotenv()
 except ImportError:
     pass
 
-# Set your Groq API key here OR in a .env file as GROQ_API_KEY=your_key
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "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")
+GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
-GROQ_MODEL   = "llama-3.1-8b-instant"
+GROQ_MODEL   = os.environ.get("GROQ_MODEL", "llama-3.1-8b-instant")
 
 DATA_DIR      = "data"
 INDEX_FILE    = "faiss_index.bin"
@@ -90,10 +83,10 @@ TOP_K            = 4
 embedding_model  = None
 faiss_index      = None
 chunk_metadata:  List[dict] = []
-ml_model         = None        # trained sklearn classifier
+ml_model         = None
 ml_label_encoder = None
 ml_scaler        = None
-ml_training_log: List[dict] = []   # history of training runs
+ml_training_log: List[dict] = []
 
 
 # =============================================================================
@@ -236,12 +229,6 @@ def call_groq(question: str, chunks: List[dict]) -> str:
 #  ML — Synthetic Medical Dataset Generator
 # =============================================================================
 def generate_medical_dataset(n_samples: int = 500) -> pd.DataFrame:
-    """
-    Generate a synthetic medical classification dataset.
-    Features: age, bmi, blood_pressure, glucose, cholesterol,
-              heart_rate, smoking, diabetes_history
-    Label   : risk_level  (Low / Medium / High)
-    """
     np.random.seed(42)
     n = n_samples
 
@@ -249,12 +236,11 @@ def generate_medical_dataset(n_samples: int = 500) -> pd.DataFrame:
     bmi        = np.round(np.random.normal(26, 5, n).clip(15, 50), 1)
     bp         = np.random.randint(80, 200, n)
     glucose    = np.random.randint(70, 300, n)
-    chol       = np.random.randint(120, 350,n)
+    chol       = np.random.randint(120, 350, n)
     heart_rate = np.random.randint(50, 110, n)
     smoking    = np.random.randint(0, 2,    n)
     diabetes_h = np.random.randint(0, 2,    n)
 
-    # Rule-based risk label (deterministic + noise)
     score = (
         (age        > 60).astype(int) * 2 +
         (bmi        > 30).astype(int) * 2 +
@@ -264,7 +250,7 @@ def generate_medical_dataset(n_samples: int = 500) -> pd.DataFrame:
         (heart_rate > 90).astype(int) * 1 +
         smoking * 2 +
         diabetes_h * 2 +
-        np.random.randint(0, 3, n)          # noise
+        np.random.randint(0, 3, n)
     )
 
     labels = np.where(score <= 3, "Low",
@@ -297,20 +283,16 @@ def train_ml_model(algorithm: str = "random_forest", n_samples: int = 500) -> di
     X = df[feature_cols].values
     y = df["risk_level"].values
 
-    # Encode labels
     ml_label_encoder = LabelEncoder()
     y_enc = ml_label_encoder.fit_transform(y)
 
-    # Scale features
     ml_scaler = StandardScaler()
     X_scaled  = ml_scaler.fit_transform(X)
 
-    # Train/test split
     X_tr, X_te, y_tr, y_te = train_test_split(
         X_scaled, y_enc, test_size=0.2, random_state=42, stratify=y_enc
     )
 
-    # Choose algorithm
     algo_map = {
         "logistic_regression": LogisticRegression(max_iter=1000, random_state=42),
         "random_forest":       RandomForestClassifier(n_estimators=100, random_state=42),
@@ -320,21 +302,16 @@ def train_ml_model(algorithm: str = "random_forest", n_samples: int = 500) -> di
         algorithm = "random_forest"
     clf = algo_map[algorithm]
 
-    # Cross-validation
     cv_scores = cross_val_score(clf, X_tr, y_tr, cv=5, scoring="accuracy")
-
-    # Final fit
     clf.fit(X_tr, y_tr)
     ml_model = clf
 
-    # Save model
     with open(ML_MODEL_FILE, "wb") as f:
         pickle.dump({"model": ml_model,
                      "encoder": ml_label_encoder,
                      "scaler": ml_scaler,
                      "features": feature_cols}, f)
 
-    # Evaluate on test set
     y_pred = clf.predict(X_te)
     acc    = accuracy_score(y_te, y_pred)
     report = classification_report(
@@ -344,7 +321,6 @@ def train_ml_model(algorithm: str = "random_forest", n_samples: int = 500) -> di
     )
     cm = confusion_matrix(y_te, y_pred).tolist()
 
-    # Feature importance (if available)
     feat_imp = {}
     if hasattr(clf, "feature_importances_"):
         feat_imp = dict(zip(feature_cols, clf.feature_importances_.round(4).tolist()))
@@ -355,20 +331,20 @@ def train_ml_model(algorithm: str = "random_forest", n_samples: int = 500) -> di
     elapsed = round(time.time() - t0, 2)
 
     result = {
-        "algorithm":          algorithm,
-        "n_samples":          n_samples,
-        "train_size":         len(X_tr),
-        "test_size":          len(X_te),
-        "accuracy":           round(acc * 100, 2),
-        "cv_mean":            round(cv_scores.mean() * 100, 2),
-        "cv_std":             round(cv_scores.std()  * 100, 2),
-        "cv_scores":          [round(s * 100, 2) for s in cv_scores.tolist()],
+        "algorithm":             algorithm,
+        "n_samples":             n_samples,
+        "train_size":            len(X_tr),
+        "test_size":             len(X_te),
+        "accuracy":              round(acc * 100, 2),
+        "cv_mean":               round(cv_scores.mean() * 100, 2),
+        "cv_std":                round(cv_scores.std()  * 100, 2),
+        "cv_scores":             [round(s * 100, 2) for s in cv_scores.tolist()],
         "classification_report": report,
-        "confusion_matrix":   cm,
-        "classes":            ml_label_encoder.classes_.tolist(),
-        "feature_importance": feat_imp,
-        "training_time_sec":  elapsed,
-        "trained_at":         datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        "confusion_matrix":      cm,
+        "classes":               ml_label_encoder.classes_.tolist(),
+        "feature_importance":    feat_imp,
+        "training_time_sec":     elapsed,
+        "trained_at":            datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
     }
 
     ml_training_log.append({
@@ -381,7 +357,7 @@ def train_ml_model(algorithm: str = "random_forest", n_samples: int = 500) -> di
 
 
 # =============================================================================
-#  ML — Test / Predict
+#  ML — Predict
 # =============================================================================
 def predict_risk(patient: dict) -> dict:
     if ml_model is None:
@@ -454,11 +430,11 @@ def ask():
         return jsonify({"error": "Knowledge base not loaded. Restart the server."}), 503
 
     try:
-        chunks  = retrieve_chunks(question)
+        chunks = retrieve_chunks(question)
         if not chunks:
             return jsonify({"answer": "No relevant info found.", "sources": [], "error": None})
 
-        answer  = call_groq(question, chunks)
+        answer = call_groq(question, chunks)
 
         seen, sources = set(), []
         for c in chunks:
@@ -499,17 +475,10 @@ def rebuild_index():
 # =============================================================================
 @app.route("/ml/train", methods=["POST"])
 def ml_train():
-    """
-    Train the ML risk classifier.
-    Body (optional JSON):
-      { "algorithm": "random_forest|logistic_regression|gradient_boosting",
-        "n_samples": 500 }
-    """
     body      = request.get_json(silent=True) or {}
     algorithm = body.get("algorithm", "random_forest")
     n_samples = int(body.get("n_samples", 500))
     n_samples = max(100, min(n_samples, 5000))
-
     try:
         result = train_ml_model(algorithm, n_samples)
         return jsonify({"status": "success", "result": result})
@@ -520,13 +489,6 @@ def ml_train():
 
 @app.route("/ml/predict", methods=["POST"])
 def ml_predict():
-    """
-    Predict patient risk level.
-    Body JSON:
-      { "age":18-85, "bmi":15-50, "blood_pressure":80-200,
-        "glucose":70-300, "cholesterol":120-350,
-        "heart_rate":50-110, "smoking":0|1, "diabetes_history":0|1 }
-    """
     body = request.get_json(silent=True) or {}
     try:
         result = predict_risk(body)
@@ -537,10 +499,6 @@ def ml_predict():
 
 @app.route("/ml/test", methods=["POST"])
 def ml_test():
-    """
-    Run test evaluation on a fresh batch of synthetic patients.
-    Body (optional): { "n_test": 100 }
-    """
     if ml_model is None:
         return jsonify({"error": "Train the model first (/ml/train)."}), 400
 
@@ -568,7 +526,6 @@ def ml_test():
         )
         cm = confusion_matrix(y_enc, y_pred_e).tolist()
 
-        # Sample predictions (first 10)
         samples = []
         for i in range(min(10, n_test)):
             row = df.iloc[i]
@@ -604,7 +561,6 @@ def ml_history():
 
 @app.route("/ml/dataset-preview")
 def dataset_preview():
-    """Return first 20 rows of the synthetic dataset as JSON."""
     df = generate_medical_dataset(200)
     return jsonify({
         "columns": df.columns.tolist(),
@@ -624,18 +580,17 @@ def initialize():
     print("  AI Medical Assistant — Starting Up")
     print("="*60)
 
-    # Load embedding model
-    print(f"[INFO] Loading embedding model: {EMBED_MODEL_NAME}")
-    if GROQ_API_KEY == "YOUR_GROQ_API_KEY_HERE" or not GROQ_API_KEY:
+    if not GROQ_API_KEY:
         print("[WARN] ⚠️  No Groq API key set! Chat will not work.")
-        print("[WARN]    Set GROQ_API_KEY in a .env file or environment variable.")
+        print("[WARN]    Set GROQ_API_KEY in Render's Environment Variables.")
         print("[WARN]    Get a free key at https://console.groq.com")
     else:
         print(f"[INFO] Groq API key configured ✓ (model: {GROQ_MODEL})")
+
+    print(f"[INFO] Loading embedding model: {EMBED_MODEL_NAME}")
     embedding_model = SentenceTransformer(EMBED_MODEL_NAME)
     print("[INFO] Embedding model ready ✓")
 
-    # Load or build FAISS
     if os.path.exists(INDEX_FILE) and os.path.exists(METADATA_FILE):
         faiss_index, chunk_metadata = load_index()
     else:
@@ -648,7 +603,6 @@ def initialize():
         else:
             print("[WARN] No documents found — RAG unavailable until data/ is populated.")
 
-    # Load saved ML model (if exists from a previous run)
     if os.path.exists(ML_MODEL_FILE):
         with open(ML_MODEL_FILE, "rb") as f:
             saved = pickle.load(f)
@@ -657,17 +611,21 @@ def initialize():
         ml_scaler        = saved["scaler"]
         print("[INFO] Saved ML model loaded ✓")
     else:
-        # Auto-train on startup so predict works immediately
         print("[INFO] Auto-training ML model …")
         train_ml_model("random_forest", 500)
         print("[INFO] ML model ready ✓")
 
     print("="*60)
-    print("  🏥  http://localhost:5000")
+    print("  🏥  App is running")
     print("="*60 + "\n")
 
 
+# =============================================================================
+#  Entry Point — Render compatible
+# =============================================================================
+# Initialize on module load so gunicorn workers also initialize
+initialize()
+
 if __name__ == "__main__":
-    initialize()
-    port = int(os.environ.get("PORT", 10000))
+    port = int(os.environ.get("PORT", 5000))
     app.run(debug=False, host="0.0.0.0", port=port)
